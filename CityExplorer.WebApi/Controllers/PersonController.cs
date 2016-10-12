@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Http;
+using CityExplorer.DatabaseLayer;
+using CityExplorer.Model;
+using System.Web.OData;
 
 namespace CityExplorer.WebApi.Controllers
 {
-    public class PersonController : Controller
+    public class PersonController : ODataController
     {
-        // GET: Person
-        public ActionResult Index()
+        private readonly IRepository<Person> _repository = new Repository<Person>();
+
+        public IHttpActionResult Get()
         {
-            return View();
+            return Ok(_repository.GetList());
         }
     }
 }

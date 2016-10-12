@@ -2,6 +2,7 @@
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
 using CityExplorer.Model;
+using Microsoft.OData.Edm;
 
 namespace CityExplorer.WebApi
 {
@@ -9,12 +10,21 @@ namespace CityExplorer.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            ODataModelBuilder builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Person>("Person");
             config.MapODataServiceRoute(
-                routeName: "ODataRoute",
-                routePrefix: "odata",
-                model: builder.GetEdmModel());
+                  "ODataRoute",
+                  "odata",
+                  GetEdmModel());
+
+            config.EnsureInitialized();
+        }
+        private static IEdmModel GetEdmModel()
+        {
+            var builder = new ODataConventionModelBuilder();
+            builder.Namespace = "CityExplorer";
+            builder.ContainerName = "CityExplorerlContainer";
+
+            builder.EntitySet<Person>("Person");
+            return builder.GetEdmModel();
         }
     }
 }
