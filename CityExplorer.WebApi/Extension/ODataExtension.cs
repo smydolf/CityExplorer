@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Extensions;
-using System.Web.Http.OData.Routing;
 using System.Web.Http.Routing;
-using Microsoft.Data.OData.Query;
+using System.Web.OData;
+using System.Web.OData.Extensions;
+using System.Web.OData.Routing;
+
 
 namespace CityExplorer.WebApi.Extension
 {
