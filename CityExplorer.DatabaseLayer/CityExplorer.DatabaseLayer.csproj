@@ -51,13 +51,9 @@
   <ItemGroup>
     <Compile Include="CityExplorerContext.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="Migrations\201609221927128_InitMigration.cs" />
-    <Compile Include="Migrations\201609221927128_InitMigration.Designer.cs">
-      <DependentUpon>201609221927128_InitMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610022105377_Init2.cs" />
-    <Compile Include="Migrations\201610022105377_Init2.Designer.cs">
-      <DependentUpon>201610022105377_Init2.cs</DependentUpon>
+    <Compile Include="Migrations\201610121409354_init.cs" />
+    <Compile Include="Migrations\201610121409354_init.Designer.cs">
+      <DependentUpon>201610121409354_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,18 +64,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609221927128_InitMigration.resx">
-      <DependentUpon>201609221927128_InitMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610022105377_Init2.resx">
-      <DependentUpon>201610022105377_Init2.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CityExplorer.Model\CityExplorer.Model.csproj">
       <Project>{1f817a85-9baa-45d4-b287-64c9de3a1e22}</Project>
       <Name>CityExplorer.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610121409354_init.resx">
+      <DependentUpon>201610121409354_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
