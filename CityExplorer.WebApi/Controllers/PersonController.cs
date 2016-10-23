@@ -1,17 +1,16 @@
 ﻿using System.Web.Http;
-using CityExplorer.DatabaseLayer;
+using System.Web.OData.Routing;
 using CityExplorer.Model;
-using System.Web.OData;
+using CityExplorer.WebApi.Controllers.BaseController;
 
 namespace CityExplorer.WebApi.Controllers
 {
-    public class PersonController : ODataController
+    public class PersonController : BaseController<Person>
     {
-        private readonly IRepository<Person> _repository = new Repository<Person>();
-
-        public IHttpActionResult Get()
+        [ODataRoute("Person({key})/DateOfBirth")]
+        public override IHttpActionResult GetEntityProperty(int key)
         {
-            return Ok(_repository.GetList());
+            return base.GetEntityProperty(key);
         }
     }
 }

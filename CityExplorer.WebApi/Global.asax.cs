@@ -1,5 +1,4 @@
-﻿using CityExplorer.WebApi.App_Start;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Routing;
 
 namespace CityExplorer.WebApi
@@ -10,9 +9,6 @@ namespace CityExplorer.WebApi
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //NinjectHttpContainer.RegisterModules(NinjectHttpModules.Modules);
-           // NinjectHttpContainer.RegisterAssembly();
-
         }
     }
 }

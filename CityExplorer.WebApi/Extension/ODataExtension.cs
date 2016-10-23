@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Web;
@@ -7,6 +8,7 @@ using System.Web.Http.Routing;
 using System.Web.OData;
 using System.Web.OData.Extensions;
 using System.Web.OData.Routing;
+using Microsoft.OData.Core.UriParser;
 
 
 namespace CityExplorer.WebApi.Extension
@@ -64,7 +66,7 @@ namespace CityExplorer.WebApi.Extension
             {
                 if (uri == null)
                 {
-                    throw new ArgumentNullException("uri");
+                    throw new ArgumentNullException(nameof(uri));
                 }
 
                 var newRequest = new HttpRequestMessage(HttpMethod.Get, uri);
@@ -86,24 +88,24 @@ namespace CityExplorer.WebApi.Extension
                 return newRequest.ODataProperties().Path;
             }
 
-            //public static TKey GetKeyValue<TKey>(this HttpRequestMessage request, Uri uri)
-            //{
-            //    if (uri == null)
-            //    {
-            //        throw new ArgumentNullException("uri");
-            //    }
+        public static TKey GetKeyValue<TKey>(this HttpRequestMessage request, Uri uri)
+        {
+            if (uri == null)
+            {
+                throw new ArgumentNullException(nameof(uri));
+            }
 
-            //    //get the odata path Ex: ~/entityset/key/$links/navigation
-            //    var odataPath = request.CreateODataPath(uri);
-            //    var keySegment = odataPath.Segments.OfType<KeyValuePathSegment>().LastOrDefault();
-            //    if (keySegment == null)
-            //    {
-            //        throw new InvalidOperationException("This link does not contain a key.");
-            //    }
+            //get the odata path Ex: ~/entityset/key/$links/navigation
+            var odataPath = request.CreateODataPath(uri);
+            var keySegment = odataPath.Segments.OfType<KeyValuePathSegment>().LastOrDefault();
+            if (keySegment == null)
+            {
+                throw new InvalidOperationException("This link does not contain a key.");
+            }
 
-            //    var value = ODataUriUtils.ConvertFromUriLiteral(keySegment.Value, Microsoft.OData.Core.ODataVersion.V4);
-            //    return (TKey)value;
-            //}
+            var value = ODataUriUtils.ConvertFromUriLiteral(keySegment.Value, Microsoft.OData.Core.ODataVersion.V4);
+            return (TKey)value;
         }
+    }
     
 }
