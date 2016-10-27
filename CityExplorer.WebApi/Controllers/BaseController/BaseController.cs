@@ -3,6 +3,7 @@ using System.Net;
 using System.Web.Http;
 using CityExplorer.DatabaseLayer;
 using System.Web.OData;
+using CityExplorer.Model;
 using CityExplorer.WebApi.Extension;
 using CityExplorer.WebApi.Interfaces;
 
@@ -11,7 +12,7 @@ namespace CityExplorer.WebApi.Controllers.BaseController
 {
     public class BaseController<T> : ODataController, IBaseController<T> where T : class
     {
-        private readonly IRepository<T> _repository = new Repository<T>();
+        public readonly IRepository<T> _repository = new Repository<T>();
 
         public IHttpActionResult Get()
         {
@@ -31,7 +32,7 @@ namespace CityExplorer.WebApi.Controllers.BaseController
         {
             T result = _repository.GetEntityById(key);
             if (result == null) return NotFound();
-            return Ok(SingleResult.Create((IQueryable<T>)result));
+            return Ok(result);
         }
         public virtual IHttpActionResult GetEntityProperty([FromODataUri]int key)
         {

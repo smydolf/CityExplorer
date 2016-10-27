@@ -12,9 +12,9 @@ namespace CityExplorer.WebApi.Controllers
         [ODataRoute("Person({key})/LastName")]
         [ODataRoute("Person({key})/Gender")]
         [ODataRoute("Person({key})/Email")]
-
         public override IHttpActionResult GetEntityProperty(int key)
         {
+            
             return base.GetEntityProperty(key);
         }
     }
