@@ -13,7 +13,7 @@ namespace CityExplorer.DatabaseLayer.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201610121409354_init"; }
+            get { return "201610291517049_init"; }
         }
         
         string IMigrationMetadata.Source

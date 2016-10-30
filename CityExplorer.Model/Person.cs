@@ -20,11 +20,11 @@ namespace CityExplorer.Model
         [StringLength(50)]
         public string LastName { get; set; }
 
-        [Required]
+       
         [DataType(DataType.Date)]
-        public DateTimeOffset DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
-        [Required]
+       
         public Gender Gender { get; set; }
     }
 }

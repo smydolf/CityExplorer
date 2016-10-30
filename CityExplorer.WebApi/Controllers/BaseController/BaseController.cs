@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Http;
 using CityExplorer.DatabaseLayer;
@@ -24,6 +25,7 @@ namespace CityExplorer.WebApi.Controllers.BaseController
             {
                 return BadRequest(ModelState);
             }
+
             _repository.AddEntity(entity);
             _repository.SaveChange();
             return Created(entity);
