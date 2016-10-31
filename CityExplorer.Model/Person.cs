@@ -22,9 +22,9 @@ namespace CityExplorer.Model
 
        
         [DataType(DataType.Date)]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
        
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
     }
 }
